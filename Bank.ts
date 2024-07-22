@@ -1,10 +1,9 @@
-import BankAccount from "./BankAccount";
 import IBankAccount from "./IBankAccount";
 import IBank from "./IBank";
 
 export default class Bank implements IBank {
-    constructor(private account: BankAccount[]) {}
-    public addAccount(account: BankAccount): boolean {
+    constructor(private account: IBankAccount[]) {}
+    public addAccount(account: IBankAccount): boolean {
         const foundAccount = this.getAccount(account.getBalance().id);    
         if (foundAccount) return false;
         this.account.push(account);
