@@ -1,21 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class BankAccount {
-    constructor(balance) {
+    constructor(id, balance) {
+        this.id = id;
         this.balance = balance;
     }
     getBalance() {
         return this.balance;
     }
     deposit(amount) {
-        this.balance.amount += amount;
+        this.balance += amount;
     }
     withdraw(amount) {
-        if (this.balance.amount > amount) {
-            this.balance.amount -= amount;
+        if (this.balance > amount) {
+            this.balance -= amount;
             return true;
         }
         return false;
+    }
+    accountNumber() {
+        return this.id;
     }
 }
 exports.default = BankAccount;

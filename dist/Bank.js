@@ -5,7 +5,7 @@ class Bank {
         this.account = account;
     }
     addAccount(account) {
-        const foundAccount = this.getAccount(account.getBalance().id);
+        const foundAccount = this.getAccount(account.accountNumber());
         if (foundAccount)
             return false;
         this.account.push(account);
@@ -13,7 +13,7 @@ class Bank {
     }
     getAccount(id) {
         for (let i = 0; i < this.account.length; i++) {
-            if (this.account[i].getBalance().id === id) {
+            if (this.account[i].accountNumber() === id) {
                 return this.account[i];
             }
         }
