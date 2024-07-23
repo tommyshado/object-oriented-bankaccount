@@ -15,7 +15,7 @@ export default class BankAccount implements IBankAccount {
         }
         return false;
     }
-    public accountNumber() {
+    public accountNumber(): number {
         return this.id;
     }
 }
