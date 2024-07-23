@@ -1,7 +1,11 @@
 import IBankAccount from "./IBankAccount";
 import IBank from "./IBank";
 import BankAccount from "./BankAccount";
-
+/*
+*   @Class Bank implements IBank interface.
+*   The Bank class is responsible for managing a collection of bank accounts.
+*   It recieves the bank accounts from BankAccount class and stores them in an array of bankAccounts objects.
+*/
 export default class Bank implements IBank {
     constructor(private account: IBankAccount[]) {}
     public addAccount(account: BankAccount): boolean {

@@ -1,5 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/*
+*   @Class Bank implements IBank interface.
+*   The Bank class is responsible for managing a collection of bank accounts.
+*   It recieves the bank accounts from BankAccount class and stores them in an array of bankAccounts objects.
+*/
 class Bank {
     constructor(account) {
         this.account = account;

@@ -1,5 +1,8 @@
 import IBankAccount from "./IBankAccount";
-
+/*
+*   @class BankAccount implements IBankAccount interface.
+*   This class is responsible for encapsulating bank account operations.
+*/
 export default class BankAccount implements IBankAccount {
     constructor(private id: number, private balance: number) { }
     public getBalance(): number {

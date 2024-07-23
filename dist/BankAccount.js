@@ -1,5 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/*
+*   @class BankAccount implements IBankAccount interface.
+*   This class is responsible for encapsulating bank account operations.
+*/
 class BankAccount {
     constructor(id, balance) {
         this.id = id;
