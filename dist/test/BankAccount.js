@@ -35,6 +35,14 @@ describe("BankAccount & Bank Unit Tests", function () {
         bank.addAccount(new BankAccount_1.default(2, 1500));
         assert_1.default.equal(2, bank.getAllAccounts().length);
     });
+    it("should remove a bank account", function () {
+        const results = bank.addAccount(new BankAccount_1.default(1, 500));
+        assert_1.default.equal(true, results);
+        // Add another account
+        bank.addAccount(new BankAccount_1.default(2, 1500));
+        bank.removeAccount(2);
+        assert_1.default.equal(1, bank.getAllAccounts().length);
+    });
     it("should get a specific account", function () {
         bank.addAccount(new BankAccount_1.default(1, 2000));
         bank.addAccount(new BankAccount_1.default(2, 1500));

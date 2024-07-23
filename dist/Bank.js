@@ -16,6 +16,17 @@ class Bank {
         this.account.push(account);
         return true;
     }
+    removeAccount(account) {
+        const foundAccount = this.getAccount(account);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount);
+            if (idx !== -1) {
+                this.account.splice(idx, 1);
+                return true;
+            }
+        }
+        return false;
+    }
     getAccount(id) {
         for (let i = 0; i < this.account.length; i++) {
             if (this.account[i].accountNumber() === id) {
