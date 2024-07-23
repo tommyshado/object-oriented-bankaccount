@@ -14,8 +14,8 @@ export default class Bank implements IBank {
         this.account.push(account);
         return true;
     }
-    public removeAccount(account: number): boolean {
-        const foundAccount = this.getAccount(account);
+    public removeAccount(id: number): boolean {
+        const foundAccount = this.getAccount(id);
         if (foundAccount) {
             const idx = this.account.indexOf(foundAccount as BankAccount);
             if (idx !== -1) {

@@ -16,8 +16,8 @@ class Bank {
         this.account.push(account);
         return true;
     }
-    removeAccount(account) {
-        const foundAccount = this.getAccount(account);
+    removeAccount(id) {
+        const foundAccount = this.getAccount(id);
         if (foundAccount) {
             const idx = this.account.indexOf(foundAccount);
             if (idx !== -1) {
