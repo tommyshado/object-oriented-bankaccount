@@ -17,7 +17,7 @@ export default class Bank implements IBank {
         }
         return false;
     }
-    public getAllAccounts() {
+    public getAllAccounts(): IBankAccount[] {
         return this.account;
     }
 }
