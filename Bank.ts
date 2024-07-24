@@ -14,8 +14,8 @@ export default class Bank implements IBank {
         this.account.push(account);
         return true;
     }
-    public removeAccount(id: number): boolean {
-        const foundAccount = this.getAccount(id);
+    public removeAccount(accountNumber: number): boolean {
+        const foundAccount = this.getAccount(accountNumber);
         if (foundAccount) {
             const idx = this.account.indexOf(foundAccount as BankAccount);
             if (idx !== -1) {
@@ -25,9 +25,9 @@ export default class Bank implements IBank {
         }
         return false;
     }
-    public getAccount(id: number): IBankAccount | boolean {
+    public getAccount(accountNumber: number): IBankAccount | boolean {
         for(let i = 0; i < this.account.length; i++) {
-            if (this.account[i].accountNumber() === id) {
+            if (this.account[i].accountNumber() === accountNumber) {
                 return this.account[i];
             }
         }
@@ -35,5 +35,39 @@ export default class Bank implements IBank {
     }
     public getAllAccounts(): IBankAccount[] {
         return this.account;
+    }
+    public getBalance(accountNumber: number): number | undefined {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount as BankAccount);
+            if (idx !== -1) {
+                return this.account[idx].getBalance();
+            }
+        }
+        return undefined;
+    }
+    public makeDeposit(accountNumber: number, amount: number): boolean {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount as BankAccount);
+            if (idx !== -1) {
+                this.account[idx].deposit(amount);
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+    public withdrawal(accountNumber: number, amount: number): boolean {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount as BankAccount);
+            if (idx !== -1) {
+                this.account[idx].withdraw(amount);
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }

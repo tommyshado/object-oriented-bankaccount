@@ -11,7 +11,7 @@ describe("BankAccount & Bank Unit Tests", function () {
         account = new BankAccount(1, 1000);
         bank = new Bank([]);
     });
-    // Account Tests
+    // Bank Account implementation Tests
     it("should get the bank balance", function () {
         assert.equal(1000, account.getBalance());
     });
@@ -24,7 +24,7 @@ describe("BankAccount & Bank Unit Tests", function () {
         account.withdraw(200);
         assert.equal(700, account.getBalance());
     });
-    // Bank Tests
+    // Bank implementation Tests
     it("should add an account", function () {
         const results = bank.addAccount(new BankAccount(1, 500));
         assert.equal(true, results);
@@ -51,5 +51,22 @@ describe("BankAccount & Bank Unit Tests", function () {
             },
             bank.getAccount(2)
         );
+    });
+    it("should get a bank balance", function() {
+        bank.addAccount(new BankAccount(1, 2000));
+        bank.addAccount(new BankAccount(2, 1500));
+        assert.equal(2000, bank.getBalance(1));
+    });
+    it("should make a deposit", function() {
+        bank.addAccount(new BankAccount(1, 2000));
+        bank.addAccount(new BankAccount(2, 1500));
+        bank.makeDeposit(2, 500);
+        assert.equal(2000, bank.getBalance(2));
+    });
+    it("should make a withdrawal", function() {
+        bank.addAccount(new BankAccount(1, 2000));
+        bank.addAccount(new BankAccount(2, 1500));
+        bank.withdrawal(1, 200);
+        assert.equal(1800, bank.getBalance(1));
     });
 });

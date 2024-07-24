@@ -16,8 +16,8 @@ class Bank {
         this.account.push(account);
         return true;
     }
-    removeAccount(id) {
-        const foundAccount = this.getAccount(id);
+    removeAccount(accountNumber) {
+        const foundAccount = this.getAccount(accountNumber);
         if (foundAccount) {
             const idx = this.account.indexOf(foundAccount);
             if (idx !== -1) {
@@ -27,9 +27,9 @@ class Bank {
         }
         return false;
     }
-    getAccount(id) {
+    getAccount(accountNumber) {
         for (let i = 0; i < this.account.length; i++) {
-            if (this.account[i].accountNumber() === id) {
+            if (this.account[i].accountNumber() === accountNumber) {
                 return this.account[i];
             }
         }
@@ -37,6 +37,40 @@ class Bank {
     }
     getAllAccounts() {
         return this.account;
+    }
+    getBalance(accountNumber) {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount);
+            if (idx !== -1) {
+                return this.account[idx].getBalance();
+            }
+        }
+        return undefined;
+    }
+    makeDeposit(accountNumber, amount) {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount);
+            if (idx !== -1) {
+                this.account[idx].deposit(amount);
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+    withdrawal(accountNumber, amount) {
+        const foundAccount = this.getAccount(accountNumber);
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount);
+            if (idx !== -1) {
+                this.account[idx].withdraw(amount);
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
 exports.default = Bank;
