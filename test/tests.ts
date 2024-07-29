@@ -88,5 +88,11 @@ describe("Object-oriented BankAccount", function () {
             savingAccount.deposit(300);
             assert.equal(1300, savingAccount.getBalance());
         });
+        it("should add an interest", function() {
+            assert.equal(1000, savingAccount.getBalance());
+            // @savingAccount addInterest method adds 7.5% interest
+            savingAccount.addInterest();
+            assert.equal(1075, savingAccount.getBalance());
+        });
     })
 });
