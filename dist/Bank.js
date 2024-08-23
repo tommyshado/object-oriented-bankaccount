@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /*
-*   @Class Bank implements IBank interface.
-*   The Bank class is responsible for managing a collection of bank accounts.
-*   It recieves the bank accounts from BankAccount class and stores them in an array of bankAccounts objects.
-*/
+ *   @Class Bank implements IBank interface.
+ *   The Bank class is responsible for managing a collection of bank accounts.
+ *   It recieves the bank accounts from BankAccount class and stores them in an array of bankAccounts objects.
+ */
 class Bank {
     constructor(account) {
         this.account = account;
@@ -71,6 +71,15 @@ class Bank {
             return false;
         }
         return false;
+    }
+    transferAmount(accountToTransferFrom, accountToTransferTo, amount) {
+        const foundAccount = this.getAccount(accountToTransferFrom.accountNumber());
+        if (foundAccount) {
+            const idx = this.account.indexOf(foundAccount);
+            if (idx !== -1) {
+                return accountToTransferFrom.transferFrom(accountToTransferFrom, accountToTransferTo, amount);
+            }
+        }
     }
 }
 exports.default = Bank;

@@ -25,5 +25,22 @@ class BankAccount {
     accountNumber() {
         return this.id;
     }
+    transferTo(destination, amount) {
+        destination.deposit(amount);
+        return {
+            success: true,
+            message: "sent successfully"
+        };
+    }
+    transferFrom(account, targetAccount, amount) {
+        if (account.getBalance() < amount)
+            return {
+                success: false,
+                message: "Not enough bank balance",
+            };
+        account.withdraw(amount);
+        // Tranfer to account
+        return this.transferTo(targetAccount, amount);
+    }
 }
 exports.default = BankAccount;
