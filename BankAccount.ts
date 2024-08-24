@@ -32,7 +32,7 @@ export default class BankAccount implements IBankAccount, ITransferable {
     public transferFrom(account: IBankAccount, targetAccount: IBankAccount, amount: number): TransferResult {
         if (account.getBalance() < amount) return {
             success: false,
-            message: "Not enough bank balance",
+            message: `Not enough bank balance from account number: ${account.accountNumber()}`,
         }
         account.withdraw(amount);
         // Tranfer to account

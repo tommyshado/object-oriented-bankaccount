@@ -36,7 +36,7 @@ class BankAccount {
         if (account.getBalance() < amount)
             return {
                 success: false,
-                message: "Not enough bank balance",
+                message: `Not enough bank balance from account number: ${account.accountNumber()}`,
             };
         account.withdraw(amount);
         // Tranfer to account

@@ -73,7 +73,7 @@ export default class Bank implements IBank {
   }
   public transferAmount(
     accountToTransferFrom: BankAccount,
-    accountToTransferTo: IBankAccount,
+    accountToTransferTo: BankAccount,
     amount: number
   ): TransferResult | undefined {
     const foundAccount = this.getAccount(accountToTransferFrom.accountNumber());
